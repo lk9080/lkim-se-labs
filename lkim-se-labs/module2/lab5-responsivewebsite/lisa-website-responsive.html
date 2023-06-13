@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lisa's Website</title>
+
+    <style>
+
+      @media (max-width: 415px) {
+        .flex-container {
+          flex-direction: column;
+          font-size: small;
+          align-items: center;
+        }
+
+        .general-info {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+
+        .life-exp{
+          width: 100%;
+          padding-left: 10px;
+        }
+
+      }
+
+      @media (min-width: 416px) {
+        .general-info {
+          margin-right: 10px;
+        }
+      }
+
+      div {
+        font-family: monospace;
+      }
+
+      .flex-container {
+        display: flex;
+      }
+
+      .general-info {
+        background-color: rgb(201, 201, 245);
+        border-radius: 20px;
+        padding: 10px;
+        flex: 1;
+      }
+
+      .profile-pic {
+        text-align: center;
+      }
+
+      #profile-img {
+        border: 5px solid lavender;
+        border-radius: 50%;
+        width: 200px;
+        background-color: white;
+        margin-bottom: 10px;
+      }
+
+      .personal-info {
+        background-color: lavender;
+        padding: 10px;
+        border-radius: 20px;
+      }
+
+      .skill-info {
+        background-color: lavender;
+        padding: 10px;
+        border-radius: 20px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .life-exp {
+        justify-content: flex-end;
+        width: 100%;
+        border: 10px solid lavender;
+        border-radius: 20px;
+
+
+        flex: 3;
+      }
+
+      footer {
+        border: 10px solid lavender;
+        text-align: center;
+        align-items: end;
+        border-radius: 20px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="flex-container">
+        <div class="general-info">
+          <div class="profile-pic">
+            <h1>Lisa's Portfolio</h1>
+            <img id="profile-img" src="girl-icon.png" />
+          </div>
+          <h2>Personal Info</h2>
+          <div class="personal-info">
+            <h3>Phone</h3>
+            <p>0212617746</p>
+            <h3>Email</h3>
+            <p>hyun9080@hotmail.com</p>
+          </div>
+          <h2>Skill Info</h2>
+          <div class="skill-info">
+            <div>
+              <p>HTML</p>
+              <p>CSS</p>
+              <p>JAVASCRIPT</p>
+            </div>
+            <div>
+              <p>Intermediate</p>
+              <p>Intermediate</p>
+              <p>Beginner</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="life-exp">
+          <div class="work-experience">
+            <h2>Work Experience</h2>
+            <h4>Graduate Architect</h4>
+            <p>Architectus, 2021-Current</p>
+            <ul>
+              <li>Documenting concept to detailed design work</li>
+              <li>Co-ordination with consultants</li>
+            </ul>
+            <h4>Graduate Architect</h4>
+            <p>A Studio, 2018-2021</p>
+            <ul>
+              <li>Documenting resource consents</li>
+              <li>Documenting feasibilities</li>
+            </ul>
+            <h4>Retail Assistant</h4>
+            <p>Seed Heritage, 2017-2017</p>
+            <ul>
+              <li>Organising stock</li>
+              <li>Assisting customers</li>
+            </ul>
+          </div>
+          <div class="education">
+            <h2>Education</h2>
+            <h4>Software Engineering Bootcamp</h4>
+            <p>Institute of Data, 2023</p>
+            <ul>
+              <li>Work skills</li>
+              <li>Learning html, css, javascript</li>
+            </ul>
+            <h4>Masters of Architecture</h4>
+            <p>UoA, 2013-2018</p>
+            <ul>
+              <li>Design skills</li>
+              <li>Programme skills</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  </body>
+
+  <footer>
+    <div class="footer">
+      <p>Created by Lisa Kim, 2023</p>
+    </div>
+  </footer>
+</html>
