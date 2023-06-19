@@ -93,16 +93,35 @@ console.log("4. -------------------------");
 
 //function below replaces hyphen within a-z (/-([a-z])/g), /g meaning global search
 
-function camelCase(cssProp) {
-  return cssProp.replace(/-([a-z])/g, function (match, letter) {
-    return letter.toUpperCase();
-  });
-}
+// function camelCase(cssProp) {
+//   return cssProp.replace(/-([a-z])/g, function (match, letter) {
+//     return letter.toUpperCase();
+//   });
+// }
 
 // will come back to this!! make function using for loops and with/without conditional operator (for later)
-// function camelCase(cssProp) {
 
+// function camelCase(cssProp) {
+//   var words = cssProp.split('-');
+
+//   for (var i = 1; i < words.length; i++) {
+//     var word = words[i];
+//     var capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
+//     words[i] = capitalizedWord;
+//   }
+
+//   return words.join('');
 // }
+
+function camelCase(cssProp) {
+  var words = cssProp.split('-');
+
+  for (var word of words) {
+    words[words.indexOf(word)] = word.replace(/^[a-z]/, (match) => match.toUpperCase());
+  }
+
+  return words.join('');
+}
 
 console.log(camelCase('margin-left')) // marginLeft
 console.log(camelCase('background-image')) // backgroundImage
@@ -132,24 +151,27 @@ console.log(result1);
 function currencyOperation(float1, float2, operation, numDecimals) {
   float1 = parseFloat(float1);
   float2 = parseFloat(float2);
+
+  let result;
   if (operation == "*") {
-    return float1 * float2;
+    result = float1 * float2;
   } else if (operation == "-") {
-    return float1 - float2
+    result = float1 - float2;
   } else if (operation == "+") {
-    return float1 + float2
+    result = float1 + float2;
   } else if (operation == "/") {
-    return float1 / float2
+    result = float1 / float2;
   }
 
-  // will come back to this!! need to add fourth numDecimal 
-  // let result3 = result2.toFixed(numDecimals);
-  // return parseFloat(result3);
+  if (numDecimals >= 1 && numDecimals <= 10) {
+    return parseFloat(result.toFixed(numDecimals));
+  } else {
+    throw new Error("numDecimals must be between 1 and 10.");
+  }
 }
 
 var result2 = currencyOperation('0.34', '2.65', '/', 2);
 console.log(result2);
-// console.log(result3);
 
 console.log("6. -------------------------");
 
@@ -218,7 +240,32 @@ function addGenre() {
 const bookGenre = addGenre();
 console.log(bookGenre);
 
-// will come back to this!! need to do extension exercise
+function getTitles(authorInitial) {
+  return books
+    .filter(book => book.author.startsWith(authorInitial))
+    .map(book => book.title);
+}
+
+const authorInitial = 'F';
+const titles = getTitles(authorInitial);
+console.log(titles);
+
+function latestBook() {
+  let latestYear = 0;
+  let latestBook = null;
+
+  books.forEach(book => {
+    if (book.year > latestYear) {
+      latestYear = book.year;
+      latestBook = book;
+    }
+  });
+
+  return latestBook;
+}
+
+const latest = latestBook();
+console.log(latest);
 
 console.log("8. -------------------------");
 
