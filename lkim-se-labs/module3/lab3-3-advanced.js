@@ -1,73 +1,73 @@
-// console.log("1. -------------------------");
+console.log("1. -------------------------");
 
-// function makeCounter() {
-//   let currentCount = 2;
-//   return function () {
-//     currentCount += incrementBy;
-//     console.log(currentCount)
-//     return currentCount;
-//   };
+function makeCounter() {
+  let currentCount = 2;
+  return function () {
+    currentCount += incrementBy;
+    console.log(currentCount)
+    return currentCount;
+  };
+}
+
+const incrementBy = 2;
+
+let counter1 = makeCounter();
+counter1(); // 1
+counter1(); // 2
+
+let counter2 = makeCounter();
+counter2();
+counter2();
+counter2();
+
+console.log("2. -------------------------");
+
+// function delayMsg(msg)
+// {
+// console.log(`This message will be printed after a delay: ${msg}`)
 // }
 
-// const incrementBy = 2;
+const delayMsg = (msg) => {
+    console.log(`This message will be printed after a delay: ${msg}`);
+}
+const timeout1 = setTimeout(delayMsg, 100, '#1: Delayed by 100ms');
+const timeout2 = setTimeout(delayMsg, 20, '#2: Delayed by 20ms');
+const timeout3 = setTimeout(delayMsg, 0, '#3: Delayed by 0ms');
+const timeout5 = setTimeout(delayMsg, 5000, '#5: Delayed by 5 seconds');
+delayMsg('#4: Not delayed at all')
 
-// let counter1 = makeCounter();
-// counter1(); // 1
-// counter1(); // 2
+// order of print : #4, #3, #2, #1
 
-// let counter2 = makeCounter();
-// counter2();
-// counter2();
-// counter2();
+clearTimeout(timeout5);
 
-// console.log("2. -------------------------");
+console.log("3. -------------------------");
 
-// // function delayMsg(msg)
-// // {
-// // console.log(`This message will be printed after a delay: ${msg}`)
-// // }
+function debounce(func, ms) {
+    let timeoutId;
 
-// const delayMsg = (msg) => {
-//     console.log(`This message will be printed after a delay: ${msg}`);
-// }
-// const timeout1 = setTimeout(delayMsg, 100, '#1: Delayed by 100ms');
-// const timeout2 = setTimeout(delayMsg, 20, '#2: Delayed by 20ms');
-// const timeout3 = setTimeout(delayMsg, 0, '#3: Delayed by 0ms');
-// const timeout5 = setTimeout(delayMsg, 5000, '#5: Delayed by 5 seconds');
-// delayMsg('#4: Not delayed at all')
+    return function() {
+      clearTimeout(timeoutId);
 
-// // order of print : #4, #3, #2, #1
+      const context = this;
+      const args = arguments;
 
-// clearTimeout(timeout5);
+      timeoutId = setTimeout(() => {
+        func.apply(context, args);
+      }, ms);
+    };
+  }
 
-// console.log("3. -------------------------");
+  function printMe(msg) {
+    console.log('Printing debounced message:', msg);
+  }
 
-// function debounce(func, ms) {
-//     let timeoutId;
+  printMe = debounce(printMe, 1000);
 
-//     return function() {
-//       clearTimeout(timeoutId);
+  setTimeout(() => printMe('First message'), 100);
+  setTimeout(() => printMe('Second message'), 200);
+  setTimeout(() => printMe('Third message'), 300);
 
-//       const context = this;
-//       const args = arguments;
-
-//       timeoutId = setTimeout(() => {
-//         func.apply(context, args);
-//       }, ms);
-//     };
-//   }
-
-//   function printMe(msg) {
-//     console.log('Printing debounced message:', msg);
-//   }
-
-//   printMe = debounce(printMe, 1000);
-
-//   setTimeout(() => printMe('First message'), 100);
-//   setTimeout(() => printMe('Second message'), 200);
-//   setTimeout(() => printMe('Third message'), 300);
-
-// console.log("4. -------------------------");
+console.log("4. -------------------------");
 
 // function printFibonacci() {
 //   let prev = 0;
@@ -104,29 +104,29 @@
 
 // printFibonacciTimeouts();
 
-// function printFibonacci(limit) {
-//   let prev = 0;
-//   let current = 1;
-//   let count = 0;
+function printFibonacci(limit) {
+  let prev = 0;
+  let current = 1;
+  let count = 0;
 
-//   console.log(prev); // Output the first number in the sequence
-//   count++;
+  console.log(prev); // Output the first number in the sequence
+  count++;
 
-//   const fibonacciInterval = setInterval(() => {
-//     if (count >= limit) {
-//       clearInterval(fibonacciInterval);
-//       return;
-//     }
+  const fibonacciInterval = setInterval(() => {
+    if (count >= limit) {
+      clearInterval(fibonacciInterval);
+      return;
+    }
 
-//     console.log(current); // Output the current number in the sequence
-//     const next = prev + current;
-//     prev = current;
-//     current = next;
-//     count++;
-//   }, 1000); // Output a number every second (1000 milliseconds)
-// }
+    console.log(current); // Output the current number in the sequence
+    const next = prev + current;
+    prev = current;
+    current = next;
+    count++;
+  }, 1000); // Output a number every second (1000 milliseconds)
+}
 
-// // printFibonacci(10);
+printFibonacci(10);
 
 console.log("5. -------------------------");
 
@@ -226,66 +226,66 @@ console.log(elly.cohort);
 
 console.log("8. -------------------------");
 
-// class DigitalClock {
-//   constructor(prefix) {
-//   this.prefix = prefix;
-//   }
-//   display() {
-//   let date = new Date();
-//   //create 3 variables in one go using array destructuring
-//   let [hours, mins, secs] = [date.getHours(), date.getMinutes(),
-//   date.getSeconds()];
-//   if (hours < 10) hours = '0' + hours;
-//   if (mins < 10) mins = '0' + mins;
-//   if (secs < 10) secs = '0' + secs;
-//   console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
-//   }
-//   stop() {
-//   clearInterval(this.timer);
-//   }
-//   start() {
-//   this.display();
-//   this.timer = setInterval(() => this.display(), 1000);
-//   }
-//   }
-//   const myClock = new DigitalClock('my clock:')
-//   myClock.start()
+class DigitalClock {
+  constructor(prefix) {
+  this.prefix = prefix;
+  }
+  display() {
+  let date = new Date();
+  //create 3 variables in one go using array destructuring
+  let [hours, mins, secs] = [date.getHours(), date.getMinutes(),
+  date.getSeconds()];
+  if (hours < 10) hours = '0' + hours;
+  if (mins < 10) mins = '0' + mins;
+  if (secs < 10) secs = '0' + secs;
+  console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
+  }
+  stop() {
+  clearInterval(this.timer);
+  }
+  start() {
+  this.display();
+  this.timer = setInterval(() => this.display(), 1000);
+  }
+  }
+  const myClock = new DigitalClock('my clock:')
+  myClock.start()
 
-//   class PrecisionClock extends DigitalClock {
-//     constructor(prefix, precision = 1000) {
-//       super(prefix);
-//       this.precision = precision;
-//     }
+  class PrecisionClock extends DigitalClock {
+    constructor(prefix, precision = 1000) {
+      super(prefix);
+      this.precision = precision;
+    }
 
-//     start() {
-//       this.display();
-//       this.timer = setInterval(() => this.display(), this.precision);
-//     }
-//   }
+    start() {
+      this.display();
+      this.timer = setInterval(() => this.display(), this.precision);
+    }
+  }
 
-//   const myPrecisionClock = new PrecisionClock('my clock:', 1000); // Precision of 500ms
-//   myPrecisionClock.start();
+  const myPrecisionClock = new PrecisionClock('my clock:', 1000); // Precision of 500ms
+  myPrecisionClock.start();
 
-//   class AlarmClock extends DigitalClock {
-//     constructor(prefix, wakeupTime = '07:00') {
-//       super(prefix);
-//       this.wakeupTime = wakeupTime;
-//     }
+  class AlarmClock extends DigitalClock {
+    constructor(prefix, wakeupTime = '07:00') {
+      super(prefix);
+      this.wakeupTime = wakeupTime;
+    }
 
-//     display() {
-//       let currentDate = new Date();
-//       let currentHours = currentDate.getHours();
-//       let currentMinutes = currentDate.getMinutes();
-//       let currentTime = `${currentHours}:${currentMinutes}`;
+    display() {
+      let currentDate = new Date();
+      let currentHours = currentDate.getHours();
+      let currentMinutes = currentDate.getMinutes();
+      let currentTime = `${currentHours}:${currentMinutes}`;
 
-//       super.display();
+      super.display();
 
-//       if (currentTime === this.wakeupTime) {
-//         console.log('Wake Up');
-//         this.stop();
-//       }
-//     }
-//   }
+      if (currentTime === this.wakeupTime) {
+        console.log('Wake Up');
+        this.stop();
+      }
+    }
+  }
 
 console.log("9. -------------------------");
 
@@ -323,38 +323,37 @@ console.log("9. -------------------------");
 //     console.log('Alternate message for rejected promise');
 //   });
 
-// function randomDelay() {
-//   return new Promise((resolve, reject) => {
-//     const delay = Math.floor(Math.random() * 2000) + 2000; // Random delay between 1 and 20 seconds
-//     setTimeout(() => {
-//       if (delay % 2 === 0) {
-//         resolve(delay);
-//       } else {
-//         reject(new Error(`Delay of ${delay}ms failed`));
-//       }
-//     }, delay);
-//   });
-// }
+function randomDelay() {
+  return new Promise((resolve, reject) => {
+    const delay = Math.floor(Math.random() * 2000) + 2000; // Random delay between 1 and 20 seconds
+    setTimeout(() => {
+      if (delay % 2 === 0) {
+        resolve(delay);
+      } else {
+        reject(new Error(`Delay of ${delay}ms failed`));
+      }
+    }, delay);
+  });
+}
 
-// randomDelay()
-//   .then(delay => {
-//     console.log(`Successful delay of ${delay}ms`);
-//   })
-//   .catch(error => {
-//     console.error(error.message);
-//     console.log('Alternate message for rejected promise');
-//   });
+randomDelay()
+  .then(delay => {
+    console.log(`Successful delay of ${delay}ms`);
+  })
+  .catch(error => {
+    console.error(error.message);
+    console.log('Alternate message for rejected promise');
+  });
 
 console.log("10. -------------------------");
 
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 async function fetchURLData(url) {
   try {
     const response = await fetch(url);
-    if (response.status === 200) {
-      const data = await response.json();
-      return data;
+    if (response.ok) {
+      return await response.json();
     } else {
       throw new Error(`Request failed with status ${response.status}`);
     }
