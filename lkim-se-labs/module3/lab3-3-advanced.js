@@ -28,7 +28,7 @@ console.log("2. -------------------------");
 // }
 
 const delayMsg = (msg) => {
-    console.log(`This message will be printed after a delay: ${msg}`);
+  console.log(`This message will be printed after a delay: ${msg}`);
 }
 const timeout1 = setTimeout(delayMsg, 100, '#1: Delayed by 100ms');
 const timeout2 = setTimeout(delayMsg, 20, '#2: Delayed by 20ms');
@@ -43,29 +43,29 @@ clearTimeout(timeout5);
 console.log("3. -------------------------");
 
 function debounce(func, ms) {
-    let timeoutId;
+  let timeoutId;
 
-    return function() {
-      clearTimeout(timeoutId);
+  return function () {
+    clearTimeout(timeoutId);
 
-      const context = this;
-      const args = arguments;
+    const context = this;
+    const args = arguments;
 
-      timeoutId = setTimeout(() => {
-        func.apply(context, args);
-      }, ms);
-    };
-  }
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
+    }, ms);
+  };
+}
 
-  function printMe(msg) {
-    console.log('Printing debounced message:', msg);
-  }
+function printMe(msg) {
+  console.log('Printing debounced message:', msg);
+}
 
-  printMe = debounce(printMe, 1000);
+printMe = debounce(printMe, 1000);
 
-  setTimeout(() => printMe('First message'), 100);
-  setTimeout(() => printMe('Second message'), 200);
-  setTimeout(() => printMe('Third message'), 300);
+setTimeout(() => printMe('First message'), 100);
+setTimeout(() => printMe('Second message'), 200);
+setTimeout(() => printMe('Third message'), 300);
 
 console.log("4. -------------------------");
 
@@ -228,64 +228,64 @@ console.log("8. -------------------------");
 
 class DigitalClock {
   constructor(prefix) {
-  this.prefix = prefix;
+    this.prefix = prefix;
   }
   display() {
-  let date = new Date();
-  //create 3 variables in one go using array destructuring
-  let [hours, mins, secs] = [date.getHours(), date.getMinutes(),
-  date.getSeconds()];
-  if (hours < 10) hours = '0' + hours;
-  if (mins < 10) mins = '0' + mins;
-  if (secs < 10) secs = '0' + secs;
-  console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
+    let date = new Date();
+    //create 3 variables in one go using array destructuring
+    let [hours, mins, secs] = [date.getHours(), date.getMinutes(),
+    date.getSeconds()];
+    if (hours < 10) hours = '0' + hours;
+    if (mins < 10) mins = '0' + mins;
+    if (secs < 10) secs = '0' + secs;
+    console.log(`${this.prefix} ${hours}:${mins}:${secs}`);
   }
   stop() {
-  clearInterval(this.timer);
+    clearInterval(this.timer);
   }
   start() {
-  this.display();
-  this.timer = setInterval(() => this.display(), 1000);
+    this.display();
+    this.timer = setInterval(() => this.display(), 1000);
   }
-  }
-  const myClock = new DigitalClock('my clock:')
-  myClock.start()
+}
+const myClock = new DigitalClock('my clock:')
+myClock.start()
 
-  class PrecisionClock extends DigitalClock {
-    constructor(prefix, precision = 1000) {
-      super(prefix);
-      this.precision = precision;
-    }
-
-    start() {
-      this.display();
-      this.timer = setInterval(() => this.display(), this.precision);
-    }
+class PrecisionClock extends DigitalClock {
+  constructor(prefix, precision = 1000) {
+    super(prefix);
+    this.precision = precision;
   }
 
-  const myPrecisionClock = new PrecisionClock('my clock:', 1000); // Precision of 500ms
-  myPrecisionClock.start();
+  start() {
+    this.display();
+    this.timer = setInterval(() => this.display(), this.precision);
+  }
+}
 
-  class AlarmClock extends DigitalClock {
-    constructor(prefix, wakeupTime = '07:00') {
-      super(prefix);
-      this.wakeupTime = wakeupTime;
-    }
+const myPrecisionClock = new PrecisionClock('my clock:', 1000); // Precision of 500ms
+myPrecisionClock.start();
 
-    display() {
-      let currentDate = new Date();
-      let currentHours = currentDate.getHours();
-      let currentMinutes = currentDate.getMinutes();
-      let currentTime = `${currentHours}:${currentMinutes}`;
+class AlarmClock extends DigitalClock {
+  constructor(prefix, wakeupTime = '07:00') {
+    super(prefix);
+    this.wakeupTime = wakeupTime;
+  }
 
-      super.display();
+  display() {
+    let currentDate = new Date();
+    let currentHours = currentDate.getHours();
+    let currentMinutes = currentDate.getMinutes();
+    let currentTime = `${currentHours}:${currentMinutes}`;
 
-      if (currentTime === this.wakeupTime) {
-        console.log('Wake Up');
-        this.stop();
-      }
+    super.display();
+
+    if (currentTime === this.wakeupTime) {
+      console.log('Wake Up');
+      this.stop();
     }
   }
+}
 
 console.log("9. -------------------------");
 
@@ -346,22 +346,30 @@ randomDelay()
   });
 
 console.log("10. -------------------------");
+//run 'npm init' and accept all the defaults
+//run 'npm install node-fetch'
+//add this line to package.json after line 5: "type": "module",
+import fetch from 'node-fetch'
 
-// import fetch from 'node-fetch';
+globalThis.fetch = fetch
 
-async function fetchURLData(url) {
-  try {
-    const response = await fetch(url);
-    if (response.ok) {
-      return await response.json();
+async function fetchURLDataUsingAsync(url) {
+    let response = await fetch(url);
+    if (response.status === 200) {
+        return await response.json();
     } else {
-      throw new Error(`Request failed with status ${response.status}`);
+        throw new Error(`Request failed with status ${response.status}`);
     }
-  } catch (error) {
-    throw new Error(error.message);
-  }
 }
 
-fetchURLData('https://jsonplaceholder.typicode.com/todos/1')
-  .then(data => console.log(data))
-  .catch(error => console.error(error.message));
+async function test_fetchURLDataUsingAsync() {
+    try {
+        var records = await fetchURLDataUsingAsync('https://jsonplaceholder.typicode.com/todos/1');
+        console.log(records);
+    }
+    catch(error) {
+        console.error(error.message);
+    }
+}
+
+test_fetchURLDataUsingAsync();
