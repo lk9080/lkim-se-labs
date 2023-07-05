@@ -13,23 +13,48 @@
     <header>
         <h1>Welcome to our Website</h1>
         <nav>
-            <a href="mini-project1-home.html" class="button">Home</a>
-            <a href="mini-project1-link.html" class="button">Link</a>
-            <div class="affiliates-dropdown">
-                <button>Affiliates</button>
-                <select class="affiliates-dropdown-content">
-                <option>Affiliate 1</option>
-                <option>Affiliate 2</option>
-                <option>Affiliate 3</option>
-                </select>
+            <div class="left-nav">
+                <ul>
+                    <li class="nav-sel"><a href="#" class="button">Home</a></li>
+                    <li class="nav-sel"><a href="#" class="button">Link</a></li>
+                    <li class="nav-sel dropdown">
+                        <a href="#" class="dropbtn">Affiliates</a>
+                        <div class="dropdown-content">
+                            <a href="#">Affiliates 1</a>
+                            <a href="#">Affiliates 2</a>
+                            <a href="#">Affiliates 3</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <a href="mini-project1-affiliates.html" class="button">Affiliates</a>
-            <a href="mini-project1-home.html" class="button">Search</a>
-            <ul>
-            </ul>
+            <div class="right-nav">
+                <ul>
+                    <li class="nav-sel"><a href="mini-project1-home.html" class="button">Search</a></li>
+                    <li class="nav-sel"><input type="text" class="search" name="search" placeholder="Search..."></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
+    <div class="login-block">
+        <div>
+            <h2>Login</h2>
+        </div>
+        <div><input type="text" class="user-pw" name="username" placeholder="Username"></div>
+        <div><input type="password" class="user-pw" name="password" placeholder="Password"></div>
+        <div><label>Gender: </label>
+            <select name="gender" class="gender-select">
+                <option>Female</option>
+                <option>Male</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <div><button class="login-btn" onclick="alert('Uh oh no back-end development!')">Login</button></div>
+        <div class="txt-centre"><a href="#">Register</a></div>
+        <div class="txt-centre">
+            <p>Disclaimer: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </div>
 </body>
 
 </html>
