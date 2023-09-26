@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <header>
+      <nav>
+        <!-- works like <a href="/index.html">Home</a> -->
+        <a href="/">Home</a>
+        <a href="./index.html">Index</a>
+      </nav>
+    </header>
+    <form method="POST" action="http://localhost:3000/profile">
+      <div>
+        <label for="fname">First Name:</label>
+        <input type="text" name="fname"/>
+      </div>
+      <div>
+        <label for="lname">Last Name!:</label>
+        <input type="text" name="lname"/>
+      </div>
+      <div>
+        <label for="rbutton">Radio Button:</label>
+        <input type="radio" name="rbutton"/>
+      </div>
+      <div>
+        <label for="cbutton">Checkbox:</label>
+        <input type="checkbox" name="cbutton"/>
+      </div>
+      <select name="fruit">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="kiwifruit">Kiwifruit</option>
+      </select>
+      <br>
+      <button type="submit">Submit form</button>
+    </form>
+    <main></main>
+    <footer>Copyright 2021 &copy;</footer>
+  </body>
+</html>
