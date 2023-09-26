@@ -1,0 +1,22 @@
+.games-list-container {
+    width: 700px;
+    text-align: left;
+}
+
+.games-search-box {
+    width: 600px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    border: solid 2px rgb(108, 121, 182);
+    border-radius: 5px;
+    font-weight: bold;
+    color: rgb(108, 121, 182);
+}
+
+.genre-dropdown-list {
+    color: rgb(108, 121, 182);
+    font-weight: bold;
+    margin-bottom: 10px;
+}

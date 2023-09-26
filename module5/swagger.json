@@ -1,0 +1,146 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "lkim-se-labs-module5-api",
+        "description": "Creating a Games Catalogue",
+        "license": {
+            "name": "lkim",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Games Catalogue",
+            "description": "Creating a Games Catalogue"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/games": {
+            "get": {
+                "tags": [
+                    "Games Catalogue"
+                ],
+                "summary": "This endpoint should return a list of all games in the game-store.",
+                "parameters": [
+                    {
+                        "name": "publisher",
+                        "in": "query",
+                        "description": "publisher of the game"
+                    },
+                    {
+                        "name": "genre",
+                        "in": "query",
+                        "description": "genre of the game"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "title of the game"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This endpoint should return a list of all games in the game-store."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Games Catalogue"
+                ],
+                "summary": "This endpoint should add a new game to the games list.",
+                "parameters": [
+                    {
+                        "name": "num1",
+                        "in": "query",
+                        "description": "the First Number"
+                    },
+                    {
+                        "name": "num2",
+                        "in": "query",
+                        "description": "the Second number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This endpoint should add a new game to the games list."
+                    }
+                }
+            }
+        },
+        "/api/games/{id}": {
+            "get": {
+                "tags": [
+                    "Games Catalogue"
+                ],
+                "summary": "This endpoint should retrieve a specific game by its ID.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "description": "id of the game"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This endpoint should retrieve a specific game by its ID."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Games Catalogue"
+                ],
+                "summary": "This endpoint should update the details of a specific games.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "description": "id of the game"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This endpoint should update the details of a specific games."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Games Catalogue"
+                ],
+                "summary": "This endpoint should delete a specific game.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "description": "did of the game"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This endpoint should delete a specific game."
+                    }
+                }
+            }
+        }
+    }
+}

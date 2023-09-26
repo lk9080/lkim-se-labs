@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(53, 53, 75);
+}
+
+h1 {
+    color: aliceblue;
+    text-align: center;
+    margin: 10px;
+}
+
+input {
+    border: solid 3px rgb(70, 188, 235);
+    width: 95%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    text-align: center;
+}
+
+button {
+    border: solid 3px rgb(70, 188, 235);
+    background-color: white;
+    color: gray;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game-filter {
+    color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.games-list {
+    display: flex;
+    width: auto;
+    background-color: rgb(53, 53, 75);
+    color: red;
+}
